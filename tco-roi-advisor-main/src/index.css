@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 220 30% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 30% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 30% 12%;
+    --primary: 215 65% 22%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 15% 92%;
+    --secondary-foreground: 220 30% 20%;
+    --muted: 220 12% 94%;
+    --muted-foreground: 220 10% 46%;
+    --accent: 168 50% 36%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 215 65% 22%;
+    --radius: 0.5rem;
+    --success: 158 55% 36%;
+    --warning: 38 92% 50%;
+    --info: 215 70% 50%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 215 65% 22%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 215 65% 50%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  .kpi-card {
+    @apply bg-card rounded-lg border p-4 shadow-sm;
+  }
+  .section-card {
+    @apply bg-card rounded-lg border shadow-sm;
+  }
+  .tab-active {
+    @apply bg-primary text-primary-foreground;
+  }
+  .tab-inactive {
+    @apply bg-card text-muted-foreground hover:text-foreground hover:bg-secondary;
+  }
+  .badge-success {
+    @apply bg-[hsl(var(--success))] text-[hsl(var(--primary-foreground))];
+  }
+  .badge-warning {
+    @apply bg-[hsl(var(--warning))] text-foreground;
+  }
+  .badge-critical {
+    @apply bg-destructive text-destructive-foreground;
+  }
+  .alert-warning {
+    @apply border-l-4 border-l-[hsl(var(--warning))] bg-[hsl(var(--warning)/0.08)] p-4 rounded-r-lg;
+  }
+  .alert-critical {
+    @apply border-l-4 border-l-destructive bg-destructive/5 p-4 rounded-r-lg;
+  }
+}
+
+@media print {
+  .no-print { display: none !important; }
+  .print-only { display: block !important; }
+  body {
+    background: white !important;
+    font-size: 10pt;
+    color: black !important;
+  }
+  .section-card, .kpi-card {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+    break-inside: avoid;
+  }
+  .print-page-break { break-before: page; }
+  @page {
+    margin: 1.5cm 2cm;
+    size: A4;
+  }
+  .print-cover {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+  }
+}
